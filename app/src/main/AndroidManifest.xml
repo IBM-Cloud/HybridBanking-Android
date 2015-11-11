@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bluemix.bluebank" >
+    <!-- Push Settings Start -->
+
+
+    <!-- Permissions -->
+    <permission
+        android:name="com.ibm.mobilefirstplatform.clientsdk.android.app.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.ibm.mobilefirstplatform.clientsdk.android.app.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Push Settings End -->
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+            <!-- Push Settings Start -->
+
+
+            <!-- Notification Intent -->
+            <intent-filter>
+                <action android:name="com.ibm.mobilefirstplatform.clientsdk.android.app.IBMPushNotification" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Push Settings End -->
+        </activity>
+
+
+        <!-- Push Settings Start -->
+
+
+        <!-- Add GCM Intent Service and intent-filters for RECEIVE and REGISTRATION of notifications -->
+        <service android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushIntentService" />
+
+        <receiver
+            android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.internal.MFPPushBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.ibm.mobilefirstplatform.clientsdk.android.app" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="com.ibm.mobilefirstplatform.clientsdk.android.app" />
+            </intent-filter>
+        </receiver>
+        <!-- Push Settings End -->
+    </application>
+
+</manifest>
