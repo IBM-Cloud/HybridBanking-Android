@@ -1,6 +1,9 @@
 # Hybrid Banking Demo
 
 https://www.youtube.com/watch?v=7OLkIGoBpi0
+The video describes the ty
+
+This repository helps you set up a simple demo to showcase some the capabilities. It is not a sample application. A real application would include Bluemix Local, API Management, Secure Gateway, Databases, etc...
 
 ### Android Application Setup
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
