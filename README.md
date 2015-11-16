@@ -2,7 +2,7 @@
 
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
-This repository helps you set up a demo application to showcase some the capabilities. It is not a sample application. This demo application uses real Bluemix mobile push and Watson services, but the data is mock and all pieces runs entirely on Bluemix Public. In a real hybrid environemnt, the data would reside in an on-prem database, the Feedback Manager application would run in Bluemix Local and you can leverage technologies like Secure Gateway and API management to handle secure integration. This is highlighted in the video above.
+This repository helps you set up a demo application to showcase some the capabilities. It is not a sample application. This demo application uses Bluemix mobile push and Watson services, but the data is mock and all pieces runs entirely on Bluemix Public for demo purposes. In a real hybrid environemnt, the data would reside in an on-prem database, the Feedback Manager application would run in Bluemix Local and you can leverage technologies like Secure Gateway and API management to handle secure integration. This is highlighted in the video above.
 
 ### Android Application Setup
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
@@ -15,7 +15,7 @@ This portion will set up the Android application the Banking customer will use t
 
 ### Bluemix Mobile Backend
 
-Next, you will need to setup a Bluemix Mobile Backend application which will handle sending push notifications to the Android application.
+Next, you will need to setup a Bluemix Mobile Backend application which will handle sending push notifications to the Android application. 
 
 1. Log into Bluemix
 2. **CREATE APP** -> **Mobile** -> \<PickABackendName\> -> **Finish**
@@ -39,7 +39,7 @@ private String BluemixMobileBackendApplication_App_GUID= "ef5xxxx-xxxx-xxxx-xxxx
    You can get both of these by clicking on **Mobile Options** in your Bluemix Mobile Backend application dashboard.
 
 ### Feedback Manager application with Watson
-Next, you will need to deploy a node.js application which the Bank would use internally to manage all the feedback.
+Next, you will need to deploy a node.js application which the Bank would use internally to manage all the feedback. In a hybrid scenario, you would run this application in Bluemix Local.
 
 1. Go here: https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager
 2. If you have **git** installed, you know what to do. If not, click on **Download Zip** and extract it.
@@ -57,7 +57,7 @@ cf push <pickAUniqueAppName>
 Bind the **Language Translation** and **Tone Analyzer** (in the Bluemix Labs catalog at the bottom of the regular catalog) services to this application. 
 
 ### Link Android Application to the Feedback Manager app
-The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could maybe use APIm to expose that database as a Bluemix custom service. To keep things simple, we will skip this part.
+The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
 
 1. Open Android Studio again and drill down to: 
 `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
