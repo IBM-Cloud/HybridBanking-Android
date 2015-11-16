@@ -39,12 +39,14 @@ public class MainActivity extends Activity {
 
     ////////////////////////////////////////////////
     //FILL THESE OUT WITH YOUR OWN VALUES!
-    //Bluemix Mobile backend which will send push notifications
 
+    //Bluemix Mobile backend which will send push notifications
     private String BluemixMobileBackendApplication_ROUTE = "http://YOURBACKENDROUTE.mybluemix.net";
     private String BluemixMobileBackendApplication_App_GUID= "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx";
 
     //Application which will receive the feedback submitted from this Android application.
+    //If running in a hybrid environment where feedback is stored on-premise, the Secure Gateway API would go here.
+    //For this demo application, we are going to talk directly to the feedback manager application.
     private String FeedbackApplicationRoute = "http://FEEDBACKMANAGER_APP.mybluemix.net/";
 
     //Your name
