@@ -2,7 +2,7 @@
 
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
-This repository helps you set up a simple demo to showcase some the capabilities. It is not a sample application. A real application would include Bluemix Local, API Management, Secure Gateway, Databases, etc as shown in the video above.
+This repository helps you set up a demo application to showcase some the capabilities. It is not a sample application. This demo application uses real Bluemix mobile push and Watson services, but the data is mock and all pieces runs entirely on Bluemix Public. In a real hybrid environemnt, the data would reside in an on-prem database, the Feedback Manager application would run in Bluemix Local and you can leverage technologies like Secure Gateway and API management to handle secure integration. This is highlighted in the video above.
 
 ### Android Application Setup
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
