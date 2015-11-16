@@ -4,6 +4,8 @@ https://www.youtube.com/watch?v=7OLkIGoBpi0
 
 This repository helps you set up a demo application to showcase some the capabilities. It is not a sample application. This demo application uses Bluemix mobile push and Watson services, but the data is mock and all pieces runs entirely on Bluemix Public for demo purposes. In a real hybrid environemnt, the data would reside in an on-prem database, the Feedback Manager application would run in Bluemix Local and you can leverage technologies like Secure Gateway and API management to handle secure integration. This is highlighted in the video above.
 
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/Architecture.png)
+
 ### Android Application Setup
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
 
