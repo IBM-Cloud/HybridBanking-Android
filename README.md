@@ -12,8 +12,8 @@ This portion will set up the Android application the Banking customer will use t
 1. Download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip
 2. Extract it.
 3. Launch Android Studio
-4. Import existing project -> Point to extracted folder
-5. Give it a minute to set everything up. Click **Install build tools and sync project** if you see it.
+4. Open existing project -> Point to extracted folder -> Choose
+5. Give it a minute or two to set everything up. Click **Install build tools and sync project** if you see it.
 
 ### Bluemix Mobile Backend
 
@@ -45,7 +45,7 @@ Next, you will need to deploy a node.js application which the Bank would use int
 
 1. Go here: https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager
 2. If you have **git** installed, you know what to do. If not, click on **Download Zip** and extract it.
-3. Open **server.js** using your favorite editor and update these two lines below. You can find these values by clicking **Show Credentials** under IBM Push Notifications in your Bluemix Mobile Backend dashboard. This will allow this application to talk to the Bluemix mobile push service.
+3. Open **server.js** using your favorite editor and update these two lines below. You can find these values by clicking **Show Credentials** under IBM Push Notifications in your Bluemix Mobile Backend dashboard. This will allow this application to talk to the Bluemix mobile push service. Look in the "credentials" block:
 ```
 var IBMPushNotifications_url = "http://imfpush.ng.bluemix.net/imfpush/v1/apps/....";
 var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
