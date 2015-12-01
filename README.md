@@ -1,14 +1,20 @@
 # Hybrid Banking Demo - Interaction of Customer on Mobile Device with Banking Service Center
 
-This project shows how a customer on a mobile device like an Android phone could interact with support staff in a banking service center. The customer is able to check the account status and to submit a feedback message to the customer support. The bank's staff sees the incoming messages with enhanced context data. If the message was submitted in a language other than English, the message is also translated and presented together with the original notice. The service personnel can respond to the customer and issue reward points. The response is directly pushed back to the customer's mobile device.
+This project shows how a customer on a mobile device like an Android phone could interact with support staff in a banking service center. The customer is able to check the account status and to submit a feedback message to the customer support via a Customer Loyality App (see architecture below). The bank's staff sees the incoming messages with enhanced context data in an internal Feedback Manager application. If the message was submitted in a language other than English, the message is translated and presented together with the original notice. The service personnel can respond to the customer and issue reward points. The response is directly pushed back to the customer's mobile device.
+
+The Customer Loyality App connects to backend services hosted on [Bluemix Public](http://www.bluemix.net). The internal Feedback Manager could reside on a Bluemix Dedicated or Bluemix Local. Both application use integration services like the Secure Gateway or API Management to securely access resources in the bank's data center.
 
 Watch a walkthrough of an earlier version of this demo by following this link:
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
-## Overview
-This repository helps you set up a demo application to showcase some of the capabilities. It is not a sample application. This demo application uses Bluemix mobile push notification and some Watson services. Right now the data is mock and are stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premise database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above.
-
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/Architecture.png)
+
+## Overview
+The Hybrid Banking Demo implements the core features of the scenario described above. It showcases some Watson APIs and demonstrates mobile integration capabilities. Right now the data is mock and is stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premise database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above. The installation of this demo requires several steps which are described below, followed by instructions on how to use the Hybrid Banking Demo.
+
+
+## Installation
+As described above the project consists of a mobile application for an Android device ("Android Application") and the Web application used by the support stuff ("Feedback Manager"). Hence, the installation of this demo requires setting up both applications, provisioning and configurating the required services in Bluemix, and finally connecting the two applications together with the proper credentials. In the following, we are going to start with seting up the Android Application.
 
 ### Android Application Setup
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
@@ -75,6 +81,7 @@ private String FeedbackApplicationRoute = "http://<FEEDBACKMANAGER>.mybluemix.ne
 
 
 ### Demo
-1. Use the  Android application to submit feedback in English or Spanish.
+1. Use the  Android application to submit feedback in English, Spanish, or French.
 2. In your browser, visit your Feedback Manager application to see the new feedback and see the Watson analysis.
-3. Click on Award, type a message and click Send. The Android emulator should get a push notification!
+3. Click on Award, type a message and click Send.
+4. The Android emulator should get a push notification! Watch the upper left corner for the notification icon to appear.
