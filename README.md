@@ -1,8 +1,12 @@
-# Hybrid Banking Demo
+# Hybrid Banking Demo - Interaction of Customer on Mobile Device with Banking Service Center
 
+This project shows how a customer on a mobile device like an Android phone could interact with support staff in a banking service center. The customer is able to check the account status and to submit a feedback message to the customer support. The bank's staff sees the incoming messages with enhanced context data. If the message was submitted in a language other than English, the message is also translated and presented together with the original notice. The service personnel can respond to the customer and issue reward points. The response is directly pushed back to the customer's mobile device.
+
+Watch a walkthrough of an earlier version of this demo by following this link:
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
-This repository helps you set up a demo application to showcase some the capabilities. It is not a sample application. This demo application uses Bluemix mobile push and Watson services, but the data is mock and all pieces runs entirely on Bluemix Public for demo purposes. In a real hybrid environemnt, the data would reside in an on-prem database, the Feedback Manager application would run in Bluemix Local and you can leverage technologies like Secure Gateway and API management to handle secure integration. This is highlighted in the video above.
+## Overview
+This repository helps you set up a demo application to showcase some of the capabilities. It is not a sample application. This demo application uses Bluemix mobile push notification and some Watson services. Right now the data is mock and are stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premise database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above.
 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/Architecture.png)
 
