@@ -20,10 +20,11 @@ As described above the project consists of a mobile application for an Android d
 This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
 
 1. Download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip
-2. Extract it.
-3. Launch Android Studio
-4. Open existing project -> Point to extracted folder -> Choose
-5. Give it a minute or two to set everything up. Click **Install build tools and sync project** if you see it.
+2. Extract the zip file into directory in your file system.
+3. Launch Android Studio. If you haven't installed it yet, go [here to learn more about Android Studio](http://developer.android.com/develop/index.html).
+4. In the Android Studio starter screen choose "Open an existing Android Studio project". This will open a dialog to select the location of the existing project.
+5. Navigate to the directory where you extracted the zip file and choose that directory. Android Studio will now load and organize the project.
+6. Give it a minute or two for the import of the project to finish. If you see **Install build tools and sync project**, click it.
 
 ### Bluemix Mobile Backend
 
