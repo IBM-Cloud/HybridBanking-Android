@@ -17,7 +17,7 @@ The Hybrid Banking Demo implements the core features of the scenario described a
 As described above the project consists of a mobile application for an Android device ("Android Application") and the Web application used by the support stuff ("Feedback Manager"). Hence, the installation of this demo requires setting up both applications, provisioning and configurating the required services in Bluemix, and finally connecting the two applications together with the proper credentials. In the following, we are going to start with seting up the Android Application.
 
 ### Android Application Setup
-This portion will set up the Android application the Banking customer will use to review their loyalty points and submit feedback.
+In this portion of the demo installation we are going to set up the Android application, the app the banking customer will use to review loyalty points and submit feedback.
 
 1. Download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip
 2. Extract the zip file into directory in your file system.
@@ -26,11 +26,13 @@ This portion will set up the Android application the Banking customer will use t
 5. Navigate to the directory where you extracted the zip file and choose that directory. Android Studio will now load and organize the project.
 6. Give it a minute or two for the import of the project to finish. If you see **Install build tools and sync project**, click it.
 
+Leave the project in Android Studio open. We are going to come back to it in a later step when we are adapting URLs and service credentials.
+
 ### Bluemix Mobile Backend
 
-Next, you will need to setup a Bluemix Mobile Backend application which will handle sending push notifications to the Android application. 
+Next on our list is to create the Mobile Backend application on Bluemix. The backend handles sending push notifications to the Android application. 
 
-1. Log into Bluemix
+1. Log into [Bluemix](http://www.bluemix.net) and go to the Dashboard.
 2. **CREATE APP** -> **Mobile** -> \<PickABackendName\> -> **Finish**
 3. Click on **Dashboard** -> select your app -> **IBM Push Notifications** -> **Set up Push**
 4. Open ANOTHER tab: https://console.developers.google.com/
