@@ -33,15 +33,20 @@ Leave the project in Android Studio open. We are going to come back to it in a l
 Next on our list is to create the Mobile Backend application on Bluemix. The backend handles sending push notifications to the Android application. 
 
 1. Log into [Bluemix](http://www.bluemix.net) and go to the Dashboard.
-2. **CREATE APP** -> **Mobile** -> \<PickABackendName\> -> **Finish**
-3. Click on **Dashboard** -> select your app -> **IBM Push Notifications** -> **Set up Push**
-4. Open ANOTHER tab: https://console.developers.google.com/
-5. **Select a Project** -> **Create a new project**
-6. Copy the **Project Number** from the top of the page, and Paste this under **Sender ID** in your Bluemix **Push Dashboard** Tab.
-7. Go back to the Google Developers Tab and click **APIs & auth -> APIs**
-8. **Cloud Messaging for Android -> Enable API**
-9. **Credentials -> Add Credentials -> API Key -> Server Key -> Create**. 
-10. Copy this key and and Paste this under **API Key** in your Bluemix **Push Dashbaord**
+2. At the top are tiles for Cloud Foundry Apps, Containers, Services, and more. In the tile for Cloud Foundry Apps click on **CREATE APP** to create a new application.
+3. In the upcoming dialog choose **MOBILE**.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobileApp.png)
+4. Now type in a name for the application and then click **FINISH**. The app and its services are now provisioned.
+5. Either by waiting few moments or anytime later by clicking on **Dashboard** and selecting your app, an overview of your app and services can be brought up. Click on **IBM Push Notifications** as shown.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobileAppOverview.png)
+6. In the new screen just click **Set up Push**. This brings up a form with several fields. Here we have to configure the Google Cloud Messaging service.
+7. Open ANOTHER tab: https://console.developers.google.com/
+8. **Select a Project** -> **Create a new project**
+9. Copy the **Project Number** from the top of the page, and Paste this under **Sender ID** in your Bluemix **Push Dashboard** Tab.
+10. Go back to the Google Developers Tab and click **APIs & auth -> APIs**
+11. **Cloud Messaging for Android -> Enable API**
+12. **Credentials -> Add Credentials -> API Key -> Server Key -> Create**. 
+13. Copy this key and and Paste this under **API Key** in your Bluemix **Push Dashbaord**
 
 ### Connect Android Application to your Bluemix Mobile backend
 
