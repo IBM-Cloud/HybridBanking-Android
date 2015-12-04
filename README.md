@@ -7,7 +7,7 @@ The Customer Loyality App connects to backend services hosted on [Bluemix Public
 Watch a walkthrough of an earlier version of this demo by following this link:
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/Architecture.png)
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/Architecture.png)
 
 ## Overview
 The Hybrid Banking Demo implements the core features of the scenario described above. It showcases some Watson APIs and demonstrates mobile integration capabilities. Right now the data is mock and is stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premise database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above. The installation of this demo requires several steps which are described below, followed by instructions on how to use the Hybrid Banking Demo.
