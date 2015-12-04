@@ -43,11 +43,16 @@ Next on our list is to create the Mobile Backend application on Bluemix. The bac
 7. To obtain the needed credentials for the Google Cloud Messaging service, we need to open the following URL in another browser tab or window: https://console.developers.google.com/ It is the [Google Developers Console](https://console.developers.google.com/)
 8. In the console on the upper right click on a shown existing project (if available) and select **Create a project**
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleDevelopersConsole.png)
-9. Copy the **Project Number** from the top of the page, and Paste this under **Sender ID** in your Bluemix **Push Dashboard** Tab.
-10. Go back to the Google Developers Tab and click **APIs & auth -> APIs**
-11. **Cloud Messaging for Android -> Enable API**
-12. **Credentials -> Add Credentials -> API Key -> Server Key -> Create**. 
-13. Copy this key and and Paste this under **API Key** in your Bluemix **Push Dashbaord**
+9. In the dialog type in a name for the project and then click **Create**.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleNewProject.png)
+10. Thereafter you should see the Developers Console again with some tiles shown. On the upper left is a tile with your project name and the assigned project number shown. Copy that **Project Number** and paste this under **Sender ID** into your Bluemix **Push Dashboard** form in the other tab.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleProject.png)
+11. Go back to the Google Developers Console and click on the tile **Use Google APIs**. An overview of available APIs opens and you will find a set of **Mobile APIs**.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleMobileAPIs.png)
+12. Now select on **Cloud Messaging for Android** and in the new dialog click on **Enable API**. A new message should appear with the recommendation to create credentials. Go with it.
+13. **Credentials -> Add Credentials -> API Key -> Server Key -> Create**. 
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleAddCredentials.png)
+14. Copy this key and and Paste this under **API Key** in your Bluemix **Push Dashbaord**
 
 ### Connect Android Application to your Bluemix Mobile backend
 
