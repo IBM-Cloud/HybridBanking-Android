@@ -82,7 +82,7 @@ cd <location of your app>
 cf login -a https://api.ng.bluemix.net
 cf push <pickAUniqueAppName>
 ```
-Bind the **Language Translation** and **Tone Analyzer** (in the Bluemix Labs catalog at the bottom of the regular catalog) services to this application. 
+Bind the [**Language Translation**](https://console.ng.bluemix.net/catalog/services/language-translation/) and [**Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer) services (in the Bluemix Labs catalog at the bottom of the regular catalog) to this application. 
 
 ### Link Android Application to the Feedback Manager app
 The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
