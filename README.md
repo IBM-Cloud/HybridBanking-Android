@@ -59,24 +59,28 @@ Next on our list is to create the Mobile Backend application on Bluemix. The bac
 ### C) Connect the Android Application to your Bluemix Mobile backend
 
 1. In the Android Studio click on **Project** in the top left corner and drill down, i.e., navigate the directory and file tree down to the following file and open it in the editor: `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
-2. Locate the following lines of code in that file, they are around lines 45 to 50.
-```
-private String BluemixMobileBackendApplication_ROUTE = "http://backendURLxxxxxxx.mybluemix.net";
-private String BluemixMobileBackendApplication_App_GUID= "ef5xxxx-xxxx-xxxx-xxxx-xxxxxxxx";
-```
+2. Locate the following lines of code in that file, they are around lines 45 to 50:
+ 
+ ```
+ private String BluemixMobileBackendApplication_ROUTE = "http://backendURLxxxxxxx.mybluemix.net";
+ private String BluemixMobileBackendApplication_App_GUID= "ef5xxxx-xxxx-xxxx-xxxx-xxxxxxxx";
+ ```
 3. Replace the value for ROUTE and App_GUID with your own values. Both can be obtained by clicking on **Mobile Options** in your Bluemix Mobile Backend application dashboard as shown.
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobileOptions.png)
 
 ### D) Feedback Manager application with Watson
-Next, you will need to deploy a node.js application which the Bank would use internally to manage all the feedback. In a hybrid scenario, you would run this application in Bluemix Local.
+Next, you will need to deploy a node.js application. The bank would use this app internally to manage all the feedback ("Feeback Manager"). In a hybrid scenario this application would run on Bluemix Local.
 
-1. Go here: https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager
-2. If you have **git** installed, you know what to do. If not, click on **Download Zip** and extract it.
+1. The source code for the Feedback Manager is located here: (https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager)
+2. If you have **git** installed you could simply clone the repository. If you don't have `git`, click on **Download Zip** and extract the downloaded zip archive to a directory on your computer.
 3. Open **server.js** using your favorite editor and update these two lines below. You can find these values by clicking **Show Credentials** under IBM Push Notifications in your Bluemix Mobile Backend dashboard. This will allow this application to talk to the Bluemix mobile push service. Look in the "credentials" block:
-```
-var IBMPushNotifications_url = "http://imfpush.ng.bluemix.net/imfpush/v1/apps/....";
-var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
-```
+
+  ```
+  var IBMPushNotifications_url = "http://imfpush.ng.bluemix.net/imfpush/v1/apps/....";
+  var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+  ```
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobilePushCredentials.png)
+
 Push this application to Bluemix. 
 ```
 cd <location of your app>
@@ -91,9 +95,9 @@ The Android application for this demo will submit the feedback directly to the n
 1. Open Android Studio again and drill down to: 
 `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
 2. Around Line 55, update this variable with the route of the Feedback Manager application you created above.
-```    
-private String FeedbackApplicationRoute = "http://<FEEDBACKMANAGER>.mybluemix.net/";
-```
+  ```    
+  private String FeedbackApplicationRoute = "http://<FEEDBACKMANAGER>.mybluemix.net/";
+  ```
 **Save** and click the **Play** button at the top to launch your app in the emulator!
 
 
