@@ -16,7 +16,7 @@ The Hybrid Banking Demo implements the core features of the scenario described a
 ## Installation
 As described above the project consists of a mobile application for an Android device ("Android Application") and the Web application used by the support stuff ("Feedback Manager"). Hence, the installation of this demo requires setting up both applications, provisioning and configurating the required services in Bluemix, and finally connecting the two applications together with the proper credentials. In the following, we are going to start with seting up the Android Application.
 
-### Android Application Setup
+### A) Android Application Setup
 In this portion of the demo installation we are going to set up the Android application, the app the banking customer will use to review loyalty points and submit feedback.
 
 1. Download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip
@@ -28,7 +28,7 @@ In this portion of the demo installation we are going to set up the Android appl
 
 Leave the project in Android Studio open. We are going to come back to it in a later step when we are adapting URLs and service credentials.
 
-### Bluemix Mobile Backend
+### B) Bluemix Mobile Backend
 
 Next on our list is to create the Mobile Backend application on Bluemix. The backend handles sending push notifications to the Android application. 
 
@@ -52,21 +52,22 @@ Next on our list is to create the Mobile Backend application on Bluemix. The bac
 12. Now select on **Cloud Messaging for Android** and in the new dialog click on **Enable API**. A new message should appear with the recommendation to create credentials. Go with it.
 13. In the new dialog click on **Add Credentials** and choose **API Key**. 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleAddCredentials.png)
-14. We are almost done by picking **Server Key**. This bring up another form. Here the name for the new Server API Key needs to be specified. You can choose the name. Leave the optional field for the IP addresses empty and click **Create**.
+14. We are almost done by picking **Server Key**. This brings up another form. Here the name for the new Server API Key needs to be specified. You can choose the name. Leave the optional field for the IP addresses empty and click **Create**.
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleServerAPIKey.png)
 15. A notice with the new API key should come up. Copy this key and and paste this as **API Key** into your Bluemix **Push Dashboard** in the other browser tab. Once done click **Save** to finish the configuration.
 
-### Connect Android Application to your Bluemix Mobile backend
+### C) Connect the Android Application to your Bluemix Mobile backend
 
-1. Click on **Project** in the top left corner and drill down to: `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
-2. Around Line 50, fill in these two fields with your own values and **Save**
+1. In the Android Studio click on **Project** in the top left corner and drill down, i.e., navigate the directory and file tree down to the following file and open it in the editor: `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
+2. Locate the following lines of code in that file, they are around lines 45 to 50.
 ```
 private String BluemixMobileBackendApplication_ROUTE = "http://backendURLxxxxxxx.mybluemix.net";
 private String BluemixMobileBackendApplication_App_GUID= "ef5xxxx-xxxx-xxxx-xxxx-xxxxxxxx";
 ```
-   You can get both of these by clicking on **Mobile Options** in your Bluemix Mobile Backend application dashboard.
+3. Replace the value for ROUTE and App_GUID with your own values. Both can be obtained by clicking on **Mobile Options** in your Bluemix Mobile Backend application dashboard as shown.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobileOptions.png)
 
-### Feedback Manager application with Watson
+### D) Feedback Manager application with Watson
 Next, you will need to deploy a node.js application which the Bank would use internally to manage all the feedback. In a hybrid scenario, you would run this application in Bluemix Local.
 
 1. Go here: https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager
@@ -84,7 +85,7 @@ cf push <pickAUniqueAppName>
 ```
 Bind the [**Language Translation**](https://console.ng.bluemix.net/catalog/services/language-translation/) and [**Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer) services (in the Bluemix Labs catalog at the bottom of the regular catalog) to this application. 
 
-### Link Android Application to the Feedback Manager app
+### E) Link Android Application to the Feedback Manager app
 The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
 
 1. Open Android Studio again and drill down to: 
