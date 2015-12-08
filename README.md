@@ -80,13 +80,15 @@ Next, you will need to deploy a node.js application. The bank would use this app
   var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   ```
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobilePushCredentials.png)
-4. Push this application to Bluemix using the Cloud Foundry command line interface (`cf`). First you need to change to the directory where you put the code in step D2. Then you login to Bluemix. The commands shows how to do this for the North America/Dallas endpoint. If you would like to use another data center, e.g. London, the enpoint URL would be "https://api.eu-gb.bluemix.net". The name **pickAUniqueAppName** shown below is the application name you will be using later on to access the Feedback Manager. It needs to be unique within the Bluemix region.
-```
-cd <location of your app>
-cf login -a https://api.ng.bluemix.net
-cf push <pickAUniqueAppName>
-```
-5. Bind the [**Language Translation**](https://console.ng.bluemix.net/catalog/services/language-translation/) and [**Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer) services (in the Bluemix Labs catalog at the bottom of the regular catalog) to this application. 
+4. Push this application to Bluemix using the Cloud Foundry command line interface (`cf`). First you need to change to the directory where you put the code in step D2. Then you login to Bluemix. The commands shows how to do this for the North America/Dallas endpoint. If you would like to use another data center, e.g. London, the enpoint URL would be "https://api.eu-gb.bluemix.net". The name **pickAUniqueAppName** shown below is the application name you will be using later on to access the Feedback Manager. It needs to be unique within the Bluemix region. 
+ 
+ ```
+ cd <location of your app>
+ cf login -a https://api.ng.bluemix.net
+ cf push <pickAUniqueAppName>
+ ```
+5. Bind the [**Language Translation**](https://www.ng.bluemix.net/docs/services/WatsonLanguageTranslation/index.html) and [**Tone Analyzer**](https://www.ng.bluemix.net/docs/services/ToneAnalyzer/index.html) services to this application. Right now the **Language Translation** service can be found in the Watson section of the Bluemix Catalog, the **Tone Analyzer** service in the Bluemix Labs Catalog (at the bottom of the regular catalog). Locate each of the services, click on them, in the "Add Service" dialog choose your Feedback Manager application and finish by clicking **CREATE**.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/AddWatsonService.png)
 
 ### E) Link Android Application to the Feedback Manager app
 The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
