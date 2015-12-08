@@ -80,7 +80,7 @@ Next, you will need to deploy a node.js application. The bank would use this app
   var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   ```
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobilePushCredentials.png)
-4. Push this application to Bluemix using the Cloud Foundry command line interface (`cf`). First you need to change to the directory where you put the code in step D2. Then you login to Bluemix. The commands shows how to do this for the North America/Dallas endpoint. If you would like to use another data center, e.g. London, the enpoint URL would be "https://api.eu-gb.bluemix.net". The name **pickAUniqueAppName** shown below is the application name you will be using later on to access the Feedback Manager. It needs to be unique within the Bluemix region. 
+4. Push this application to Bluemix using the Cloud Foundry command line interface (`cf`). First you need to change to the directory where you put the code in step D2. Then you login to Bluemix. The commands shows how to do this for the North America/Dallas endpoint. If you would like to use another data center, e.g. London, the enpoint URL would be "https://api.eu-gb.bluemix.net". The name **pickAUniqueAppName** shown below is the application name you will be using later on to access the Feedback Manager. It needs to be unique within the Bluemix region.
  
  ```
  cd <location of your app>
@@ -91,18 +91,19 @@ Next, you will need to deploy a node.js application. The bank would use this app
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/AddWatsonService.png)
 
 ### E) Link Android Application to the Feedback Manager app
-The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
+The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the [Secure Gateway](https://www.ng.bluemix.net/docs/services/SecureGateway/) service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application. To communicate, it needs to know the Feedback Manager's URL.
 
-1. Open Android Studio again and drill down to: 
-`BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
-2. Around Line 55, update this variable with the route of the Feedback Manager application you created above.
+1. Open the following file in Android Studio (see C1 and C2): 
+ `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
+2. Around Line 55, update this variable with the route of the Feedback Manager application you created above in D4. The URL will look like "http://pickAUniqueAppName.region.mybluemix.net" with region either "eu-gb" or "ap-syd" if you created the app in London or Sydney.
   ```    
-  private String FeedbackApplicationRoute = "http://<FEEDBACKMANAGER>.mybluemix.net/";
+  private String FeedbackApplicationRoute = "http://<pickAUniqueAppName>.mybluemix.net/";
   ```
-**Save** and click the **Play** button at the top to launch your app in the emulator!
+3. **Save** the file.
+4. Click the **Play** button at the top to launch your app in the emulator!
 
 
-### Demo
+## Demo
 1. Use the  Android application to submit feedback in English, Spanish, or French.
 2. In your browser, visit your Feedback Manager application to see the new feedback and see the Watson analysis.
 3. Click on Award, type a message and click Send.
