@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=7OLkIGoBpi0
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/Architecture.png)
 
 ## Overview
-The Hybrid Banking Demo implements the core features of the scenario described above. It showcases some Watson APIs and demonstrates mobile integration capabilities. Right now the data is mock and is stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premise database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above. The installation of this demo requires several steps which are described below, followed by instructions on how to use the Hybrid Banking Demo.
+The Hybrid Banking Demo implements the core features of the scenario described above. It showcases some Watson APIs and demonstrates mobile integration capabilities. Right now the data is mock and is stored in a server-side file. In a real hybrid environemnt, the data would reside in an on-premises database system, the Feedback Manager application would run in Bluemix Local, and services like the Secure Gateway and API Management would be used to handle the secure integration of enterprise data. This is highlighted in the video above. The installation of this demo requires several steps which are described below, followed by instructions on how to use the Hybrid Banking Demo.
 
 
 ## Installation
@@ -44,15 +44,15 @@ Next on our list is to create the Mobile Backend application on Bluemix. The bac
 8. In the console on the upper right click on a shown existing project (if available) and select **Create a project**
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleDevelopersConsole.png)
 9. In the dialog type in a name for the project and then click **Create**.
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleNewProject.png)
-10. Thereafter you should see the Developers Console again with some tiles shown. On the upper left is a tile with your project name and the assigned project number shown. Copy that **Project Number** and paste this under **Sender ID** into your Bluemix **Push Dashboard** form in the other tab.
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleProject.png)
-11. Go back to the Google Developers Console and click on the tile **Use Google APIs**. An overview of available APIs opens and you will find a set of **Mobile APIs**.
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleMobileAPIs.png)
-12. Now select on **Cloud Messaging for Android** and in the new dialog click on **Enable API**. A new message should appear with the recommendation to create credentials. Go with it.
+![](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleNewProject.png)
+10. Thereafter you should see the Developers Console again with some tiles shown. On the upper left is a tile with your project name and the assigned project number shown. Copy that **Project Number** and paste this under **Sender ID** into your Bluemix **Push Dashboard** form in the other tab. 
+![](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleProject.png)
+11. Go back to the Google Developers Console and click on the tile **Use Google APIs**. An overview of available APIs opens and you will find a set of **Mobile APIs**. 
+![](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleMobileAPIs.png)
+12. Now select on **Cloud Messaging for Android** and in the new dialog click on **Enable API**. A new message should appear with the recommendation to create credentials. Go with it. 
 13. In the new dialog click on **Add Credentials** and choose **API Key**. 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleAddCredentials.png)
-14. We are almost done by picking **Server Key**. This brings up another form. Here the name for the new Server API Key needs to be specified. You can choose the name. Leave the optional field for the IP addresses empty and click **Create**.
+14. We are almost done by picking **Server Key**. This brings up another form. Here the name for the new Server API Key needs to be specified. You can choose the name. Leave the optional field for the IP addresses empty and click **Create**. 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleServerAPIKey.png)
 15. A notice with the new API key should come up. Copy this key and and paste this as **API Key** into your Bluemix **Push Dashboard** in the other browser tab. Once done click **Save** to finish the configuration.
 
@@ -73,21 +73,20 @@ Next, you will need to deploy a node.js application. The bank would use this app
 
 1. The source code for the Feedback Manager is located here: (https://github.com/IBM-Bluemix/HybridBanking-FeedbackManager)
 2. If you have **git** installed you could simply clone the repository. If you don't have `git`, click on **Download Zip** and extract the downloaded zip archive to a directory on your computer.
-3. Open **server.js** using your favorite editor and update these two lines below. You can find these values by clicking **Show Credentials** under IBM Push Notifications in your Bluemix Mobile Backend dashboard. This will allow this application to talk to the Bluemix mobile push service. Look in the "credentials" block:
-
+3. Open **server.js** using your favorite editor and update these two lines below. You can find these values by clicking **Show Credentials** under IBM Push Notifications in your Bluemix Mobile Backend dashboard. This will allow the application to talk to the Bluemix mobile push service. Look in the "credentials" block:
+ 
   ```
   var IBMPushNotifications_url = "http://imfpush.ng.bluemix.net/imfpush/v1/apps/....";
   var IBMPushNotifications_appSecret  = "48xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
   ```
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobilePushCredentials.png)
-
-Push this application to Bluemix. 
+4. Push this application to Bluemix using the Cloud Foundry command line interface (`cf`). First you need to change to the directory where you put the code in step D2. Then you login to Bluemix. The commands shows how to do this for the North America/Dallas endpoint. If you would like to use another data center, e.g. London, the enpoint URL would be "https://api.eu-gb.bluemix.net". The name **pickAUniqueAppName** shown below is the application name you will be using later on to access the Feedback Manager. It needs to be unique within the Bluemix region.
 ```
 cd <location of your app>
 cf login -a https://api.ng.bluemix.net
 cf push <pickAUniqueAppName>
 ```
-Bind the [**Language Translation**](https://console.ng.bluemix.net/catalog/services/language-translation/) and [**Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer) services (in the Bluemix Labs catalog at the bottom of the regular catalog) to this application. 
+5. Bind the [**Language Translation**](https://console.ng.bluemix.net/catalog/services/language-translation/) and [**Tone Analyzer**](https://console.ng.bluemix.net/catalog/services/tone-analyzer) services (in the Bluemix Labs catalog at the bottom of the regular catalog) to this application. 
 
 ### E) Link Android Application to the Feedback Manager app
 The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the Secure Gateway service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application.
