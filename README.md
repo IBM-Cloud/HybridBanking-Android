@@ -19,12 +19,11 @@ As described above the project consists of a mobile application for an Android d
 ### A) Android Application Setup
 In this portion of the demo installation we are going to set up the Android application, the app the banking customer will use to review loyalty points and submit feedback.
 
-1. Download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip
-2. Extract the zip file into directory in your file system.
-3. Launch Android Studio. If you haven't installed it yet, go [here to learn more about Android Studio](http://developer.android.com/develop/index.html).
-4. In the Android Studio starter screen choose "Open an existing Android Studio project". This will open a dialog to select the location of the existing project.
-5. Navigate to the directory where you extracted the zip file and choose that directory. Android Studio will now load and organize the project.
-6. Give it a minute or two for the import of the project to finish. If you see **Install build tools and sync project**, click it.
+1. If you have **git** installed you could simply clone this repository. Else download https://github.com/IBM-Bluemix/HybridBanking-Android/archive/master.zip and extract the zip file into directory in your file system.
+2. Launch Android Studio. If you haven't installed it yet, go [here to learn more about Android Studio](http://developer.android.com/develop/index.html).
+3. In the Android Studio starter screen choose "Open an existing Android Studio project". This will open a dialog to select the location of the existing project.
+4. Navigate to the directory where you extracted the zip file and choose that directory. Android Studio will now load and organize the project.
+5. Give it a minute or two for the import of the project to finish. If you see **Install build tools and sync project**, click it.
 
 Leave the project in Android Studio open. We are going to come back to it in a later step when we are adapting URLs and service credentials.
 
