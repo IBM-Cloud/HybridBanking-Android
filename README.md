@@ -94,8 +94,10 @@ Next, you will need to deploy a node.js application. The bank would use this app
 The Android application for this demo will submit the feedback directly to the node.js application we just created. In a real world scenario, the app would write to a database leveraging the [Secure Gateway](https://www.ng.bluemix.net/docs/services/SecureGateway/) service and the Feedback Manager application would read from that database. You could use API Management to expose that database as a Bluemix custom service. To keep the demo simple, the Android application will communicate directly to the Feedback Manager application. To communicate, it needs to know the Feedback Manager's URL.
 
 1. Open the following file in Android Studio (see C1 and C2): 
+ 
  `BlueBank/app/src/main/java/com/bluemix/bluebank/MainActivity.java`
 2. Around Line 55, update this variable with the route of the Feedback Manager application you created above in D4. The URL will look like "http://pickAUniqueAppName.region.mybluemix.net" with region either "eu-gb" or "ap-syd" if you created the app in London or Sydney.
+ 
   ```    
   private String FeedbackApplicationRoute = "http://<pickAUniqueAppName>.mybluemix.net/";
   ```
