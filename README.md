@@ -15,7 +15,7 @@ https://www.youtube.com/watch?v=7OLkIGoBpi0
     * [D) Feedback Manager application with Watson](#d-feedback-manager-application-with-watson)
     * [E) Link Android Application to the Feedback Manager app](#e-link-android-application-to-the-feedback-manager-app)
   * [Demo](#demo)
-
+  * [Troubleshooting](#troubleshooting)
 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/Architecture.png)
 
@@ -115,7 +115,12 @@ The Android application for this demo will submit the feedback directly to the n
 
 
 ## Demo
-1. Use the  Android application to submit feedback in English, Spanish, or French.
-2. In your browser, visit your Feedback Manager application to see the new feedback and see the Watson analysis.
-3. Click on Award, type a message and click Send.
-4. The Android emulator should get a push notification! Watch the upper left corner for the notification icon to appear.
+1. When you start the BlueBank app in your Android emulator it is going to bring up a screen like shown.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/BlueBankApp.png)
+2. Use the form to submit feedback in English, Spanish, or French. Once you clicked **SUBMIT FEEDBACK** the app will show an overlay window acknowledging receipt of the feedback.
+![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/FeedbackLeft.png)
+3. In your browser, visit your Feedback Manager application to see the new feedback and see the Watson analysis.
+4. Click on Award, type a message and click Send.
+5. The Android emulator should get a push notification! Watch the upper left corner for the notification icon to appear.
+
+## Troubleshooting
