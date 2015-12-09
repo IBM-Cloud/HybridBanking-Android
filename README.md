@@ -116,13 +116,22 @@ The Android application for this demo will submit the feedback directly to the n
 
 ## Demo
 1. When you start the BlueBank app in your Android emulator it is going to bring up a screen like shown.
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/BlueBankApp.png)
-2. Use the form to submit feedback in English, Spanish, or French. Once you clicked **SUBMIT FEEDBACK** the app will show an overlay window acknowledging receipt of the feedback.
+ ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/BlueBankApp.png)
+2. Use the form to submit feedback in English, Spanish, or French. Good examples for a message are "Great application, great bank. I love it", "Je deteste ma banque", or "La aplication es muy lento. Muy frustrante". Once you clicked **SUBMIT FEEDBACK** the app will show an overlay window acknowledging receipt of the feedback.
  
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/FeedbackLeft.png)
+ ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/FeedbackLeft.png)
 3. In your browser open the URL of your Feedback Manager application (see step D4/E2 for that URL). A list of customer feedbacks will be displayed. For each entry the submitted message along with a tone analysis is included. If the original feedback was not in English, the translated message is printed together with a notice showing the original language. Once you hover with your mouse over the translation notice, the original feedback is visible.
-![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/FeedbackManagerOverview.png)
-4. Click on Award, type a message and click Send.
-5. The Android emulator should get a push notification! Watch the upper left corner for the notification icon to appear.
+ 
+ ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/FeedbackManagerOverview.png)
+4. Now it is time to make the customer who left negative feedback happy. In the Feedback Manager click on **Award**, type in a message for the customer and click **Send**.
+ 
+  ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/AwardPoints.png)
+5. The Android emulator should get a push notification. Watch the upper left corner for the notification icon to appear.
+  
+ ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/AndroidNotification.png)
+6. Once a new notification has been indicated, click on that icon and the message sent via the Feedback Manager should be shown.
+  
+ ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/NotificationMessage.png)
 
 ## Troubleshooting
+to be done
