@@ -7,6 +7,16 @@ The Customer Loyality App connects to backend services hosted on [Bluemix Public
 Watch a walkthrough of an earlier version of this demo by following this link:
 https://www.youtube.com/watch?v=7OLkIGoBpi0
 
+  * [Overview](#overview)
+  * [Installation](#installation)
+    * [A) Android Application Setup](#a-android-application-setup)
+    * [B) Bluemix Mobile Backend](#b-bluemix-mobile-backend)
+    * [C) Connect the Android Application to your Bluemix Mobile backend](#c-connect-the-android-application-to-your-bluemix-mobile-backend)
+    * [D) Feedback Manager application with Watson](#d-feedback-manager-application-with-watson)
+    * [E) Link Android Application to the Feedback Manager app](#e-link-android-application-to-the-feedback-manager-app)
+  * [Demo](#demo)
+
+
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/Architecture.png)
 
 ## Overview
