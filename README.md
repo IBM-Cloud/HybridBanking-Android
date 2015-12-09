@@ -16,6 +16,8 @@ https://www.youtube.com/watch?v=7OLkIGoBpi0
     * [E) Link Android Application to the Feedback Manager app](#e-link-android-application-to-the-feedback-manager-app)
   * [Demo](#demo)
   * [Troubleshooting](#troubleshooting)
+  * [Contribute](#contribute)
+  * [Links to more information](#links-to-more-information)
 
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/Architecture.png)
 
@@ -135,3 +137,14 @@ The Android application for this demo will submit the feedback directly to the n
 
 ## Troubleshooting
 to be done
+
+## Contribute
+We are more than happy to accept external contributions to this project, be it in the form of issues and pull requests. If you find a bug, please report it via the [Issues section][issues_url] or even better, fork the project and submit a pull request with your fix! Pull requests will be evaulated on an individual basis based on value add to the sample application.
+
+## Links to more information
+* Information on [Bluemix Local](https://www.ng.bluemix.net/docs/local/index.html)
+* Bluemix-related questions on [Stackoverflow](http://stackoverflow.com/questions/tagged/bluemix)
+* Read [our Bluemix blog](https://developer.ibm.com/bluemix/blog/)
+
+
+[issues_url]: https://github.com/IBM-Bluemix/HybridBanking-Android/issues
