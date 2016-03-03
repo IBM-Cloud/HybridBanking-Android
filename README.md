@@ -117,7 +117,7 @@ The Android application for this demo will submit the feedback directly to the n
 
 
 ## Demo
-1. When you start the BlueBank app in your Android emulator it is going to bring up a screen like shown.
+1. When you start the HybridBlueBank app in your Android emulator it is going to bring up a screen like shown.
  ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/BlueBankApp.png)
 2. Use the form to submit feedback in English, Spanish, or French. Good examples for a message are "Great application, great bank. I love it", "Je deteste ma banque", or "La aplication es muy lento. Muy frustrante". Once you clicked **SUBMIT FEEDBACK** the app will show an overlay window acknowledging receipt of the feedback.
  
