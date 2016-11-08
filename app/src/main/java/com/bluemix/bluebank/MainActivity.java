@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -20,7 +21,9 @@ import android.widget.TextView;
 import com.ibm.mobilefirstplatform.clientsdk.android.core.api.BMSClient;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPush;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushException;
+import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationListener;
 import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushResponseListener;
+import com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPSimplePushNotification;
 
 import org.json.JSONObject;
 
@@ -28,26 +31,26 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     ////////////////////////////////////////////////
     //FILL THESE OUT WITH YOUR OWN VALUES!
 
-    //Bluemix Mobile backend which will send push notifications
-    private String BluemixMobileBackendApplication_ROUTE = "http://YOURBACKENDROUTE.mybluemix.net";
-    private String BluemixMobileBackendApplication_App_GUID= "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx";
+    // TODO: Replace <APP_GUID> and <CLIENT_SECRET> with a valid App GUID and Client Secret from your Bluemix Push dashboard -> Configure -> Mobile Options
+    private String BluemixMobileBackendApplication_CLIENT_SECRET = "xxxxxxxxxxxx";
+    private String BluemixMobileBackendApplication_App_GUID = "xxxxx-xxxx-xxxx-xxxx-xxxxx";
 
-    //Application which will receive the feedback submitted from this Android application.
+
+    // Application which will receive the feedback submitted from this Android application.
     //If running in a hybrid environment where feedback is stored on-premise, the Secure Gateway API would go here.
     //For this demo application, we are going to talk directly to the feedback manager application.
-    private String FeedbackApplicationRoute = "http://FEEDBACKMANAGER_APP.mybluemix.net/";
+    //TODO: Specify your own Feedback Manager application
+    private String FeedbackApplicationRoute = "http://feedbackmanager.mybluemix.net/";
 
     //Your name
     private String YourName = "Ram Vennam";
@@ -58,11 +61,9 @@ public class MainActivity extends Activity {
     static DateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss");
     static Date date = new Date();
 
-    private MFPPush push = null;
+    private MFPPush push;
+    private MFPPushNotificationListener notificationListener;
 
-    //private static final String consumerID = "BlueBank_" + dateFormat.format(date);
-    private static final String consumerID = "BlueBankConsumer1";
-    private static final String deviceAlias = "TargetDevice";
     EditText mEdit;
 
 
@@ -71,31 +72,68 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // initialize core SDK with IBM Bluemix application Region, TODO: Update region if not using Bluemix US SOUTH
+        BMSClient.getInstance().initialize(this, BMSClient.REGION_US_SOUTH);
 
-        try {
-            //Initialize the Core SDK
-            BMSClient.getInstance().initialize(getApplicationContext(), BluemixMobileBackendApplication_ROUTE, BluemixMobileBackendApplication_App_GUID);
-        } catch (MalformedURLException e) {
-            System.out.println("ERROR : Initialize the Core SDK");
-            e.printStackTrace();
-        }
-
-        //Initialize client Push SDK for Java
-        MFPPush.getInstance().initialize(getApplicationContext());
+        // Grabs push client sdk instance
         push = MFPPush.getInstance();
+        // Initialize Push client
+        // You can find your App Guid and Client Secret by navigating to the Configure section of your Push dashboard, click Mobile Options (Upper Right Hand Corner)
 
+        push.initialize(this, BluemixMobileBackendApplication_App_GUID, BluemixMobileBackendApplication_CLIENT_SECRET);
 
-        push.register(new MFPPushResponseListener<String>() {
+        // A notification listener is needed to handle any incoming push notifications within the Android application
+        // This might be immediate or take several minutes.
+        notificationListener = new MFPPushNotificationListener() {
             @Override
-            public void onSuccess(String deviceId) {
-                System.out.println("Registration successful");
+            public void onReceive (final MFPSimplePushNotification message) {
+                // TODO: process the message, add your logic here
+                android.util.Log.i(TAG, "Received a Push Notification: " + message.toString());
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        new android.app.AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Push Notification Received")
+                                .setMessage(message.getAlert())
+                                .show();
+                    }
+                });
+            }
+        };
+
+        // Attempt to register Android device with Bluemix push instance.
+        push.registerDevice(new MFPPushResponseListener<String>() {
+            // Response listener handles success and fail callback from Bluemix
+            @Override
+            public void onSuccess(String response) {
+                android.util.Log.i(TAG, "Successfully registered for push notifications");
+                push.listen(notificationListener);
             }
 
             @Override
-            public void onFailure(MFPPushException ex) {
-                ex.printStackTrace();
+            public void onFailure (MFPPushException ex) {
+
+                String errLog = "Error registering for push notifications: ";
+                String errMessage = ex.getErrorMessage();
+                int statusCode = ex.getStatusCode();
+
+                // Create error log based on response code and error message
+                if (statusCode == 401){
+                    errLog += "Cannot authenticate successfully with Bluemix Push instance, ensure your CLIENT SECRET is correct.";
+                } else if(statusCode == 404 && errMessage.contains("Push GCM Configuration")){
+                    errLog += "Push GCM Configuration does not exist, ensure you have configured GCM Push credentials on your Bluemix Push dashboard correctly.";
+                } else if(statusCode == 404){
+                    errLog += "Cannot find Bluemix Push instance, ensure your APPLICATION ID is correct";
+                } else if(statusCode >= 500){
+                    errLog += "Bluemix and/or your Push instance seem to be having problems, please try again later.";
+                } else if (statusCode == 0){
+                    errLog += "Request to Bluemix push instance timed out, ensure your device is connected to the internet.";
+                }
+
+                android.util.Log.e(TAG, errLog);
+
             }
         });
+
         final Activity activity = this;
 
 
@@ -135,10 +173,18 @@ public class MainActivity extends Activity {
                         .show();
             }
         });
-
-
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Enable the Push sdk to listen for Push notifications using the predefined notification listener
+        if (push != null) {
+            android.util.Log.i(TAG, "Listening for notifications");
+            push.listen(notificationListener);
+        }
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -190,8 +236,10 @@ public class MainActivity extends Activity {
 
         }
 
+        //Sends the feedback to the Feedback Manager application, which will use watson to  process, translate, analyze and display all feedback in a dashboard
         public void callAPI(String feedback) throws Exception {
             String feedbackAPIURL = Uri.parse(FeedbackApplicationRoute).buildUpon().appendPath("submitFeedback").toString();
+            Log.d(TAG, "Submitting feedback to " + feedbackAPIURL);
             URL url = new URL(feedbackAPIURL);
             JSONObject payloadjson = new JSONObject();
             payloadjson.put("user", YourName);
