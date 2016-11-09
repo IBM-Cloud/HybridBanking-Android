@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private String BluemixMobileBackendApplication_CLIENT_SECRET = "xxxxxxxxxxxx";
     private String BluemixMobileBackendApplication_App_GUID = "xxxxx-xxxx-xxxx-xxxx-xxxxx";
 
-
     // Application which will receive the feedback submitted from this Android application.
     //If running in a hybrid environment where feedback is stored on-premise, the Secure Gateway API would go here.
     //For this demo application, we are going to talk directly to the feedback manager application.
@@ -82,31 +81,12 @@ public class MainActivity extends AppCompatActivity {
 
         push.initialize(this, BluemixMobileBackendApplication_App_GUID, BluemixMobileBackendApplication_CLIENT_SECRET);
 
-        // A notification listener is needed to handle any incoming push notifications within the Android application
-        // This might be immediate or take several minutes.
-        notificationListener = new MFPPushNotificationListener() {
-            @Override
-            public void onReceive (final MFPSimplePushNotification message) {
-                // TODO: process the message, add your logic here
-                android.util.Log.i(TAG, "Received a Push Notification: " + message.toString());
-                runOnUiThread(new Runnable() {
-                    public void run() {
-                        new android.app.AlertDialog.Builder(MainActivity.this)
-                                .setTitle("Push Notification Received")
-                                .setMessage(message.getAlert())
-                                .show();
-                    }
-                });
-            }
-        };
-
         // Attempt to register Android device with Bluemix push instance.
         push.registerDevice(new MFPPushResponseListener<String>() {
             // Response listener handles success and fail callback from Bluemix
             @Override
             public void onSuccess(String response) {
                 android.util.Log.i(TAG, "Successfully registered for push notifications");
-                push.listen(notificationListener);
             }
 
             @Override
@@ -178,11 +158,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        // Enable the Push sdk to listen for Push notifications using the predefined notification listener
-        if (push != null) {
-            android.util.Log.i(TAG, "Listening for notifications");
-            push.listen(notificationListener);
-        }
 
     }
 
