@@ -51,7 +51,7 @@ Next on our list is to create the Mobile Backend application on Bluemix. The bac
 5. Either by waiting few moments or anytime later by clicking on **Dashboard** and selecting your app, an overview of your app and services can be brought up. Click on **IBM Push Notifications** as shown.
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/MobileAppOverview.png)
 6. In the new screen just click **Setup Push**. This brings up a form with several fields. Here we have to configure the Google Cloud Messaging service.
-7. To obtain the needed credentials for the Google Cloud Messaging service, we need to open the following URL in another browser tab or window: https://console.developers.google.com/ It is the [Google Developers Console](https://console.developers.google.com/)
+7. To obtain the needed credentials for the Google Cloud Messaging service, we need to open the following URL in another browser tab or window: https://console.firebase.google.com It is the [Google Firebase Developers Console](https://console.firebase.google.com)
 8. In the console on the upper right click on a shown existing project (if available) and select **Create a project**
 ![alt tag](https://raw.githubusercontent.com/IBM-Bluemix/HybridBanking-Android/master/images/GoogleDevelopersConsole.png)
 9. In the dialog type in a name for the project and then click **Create**.
